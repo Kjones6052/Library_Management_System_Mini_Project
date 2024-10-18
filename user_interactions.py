@@ -5,6 +5,7 @@ import re
 from book import Book
 from author import Author
 from user import User
+from library import Library
 
 def main(): # Print intro and main menu with input to choose action
     intro = "Welcome to the Library Management System!"
@@ -27,7 +28,7 @@ def main(): # Print intro and main menu with input to choose action
                             pub_date = input("Enter the Publishing Date of the book (using numerical day-month-year xx-xx-xxxx format): ")
                             if re.search(r"\d{2}-\d{2}-\d{4}", pub_date):
                                 book_availability = "Available"
-                                Book.add_book(book_title, book_title, Book(book_title, book_author, book_genre, pub_date, book_availability))
+                                Library.add_book(book_title, book_title, Book(book_title, book_author, book_genre, pub_date, book_availability))
                             else:
                                 ValueError("Incorrect Date Format: please use numbers in the day-month-year format.")
                 except ValueError as e:
@@ -37,8 +38,8 @@ def main(): # Print intro and main menu with input to choose action
                 user_id = input("Enter user ID number: ")
                 try:
                     if re.search(r"\d", user_id):
-                        Book.borrow_book(book_title, book_title, user_id)
-                        User.borrow_book(book_title, book_title, user_id)
+                        Library.borrow_book(book_title, book_title, user_id)
+                        
                     else:
                         raise ValueError("Error: Please use numerical digits only for User Id Number.")
                 except Exception as e:
@@ -48,7 +49,7 @@ def main(): # Print intro and main menu with input to choose action
                 user_id = input("Enter user ID number: ")
                 try:
                     if re.search(r"\d", user_id):
-                        Book.return_book(book_title, book_title, user_id)
+                        Library.return_book(book_title, book_title, user_id)
                         User.return_book(book_title, book_title, user_id)
                     else:
                         raise ValueError("Error: Please use numerical digits only for User Id Number.")
@@ -56,9 +57,9 @@ def main(): # Print intro and main menu with input to choose action
                     print(e)
             elif book_op == "4": # Get details and run search book method (book_title)
                 book_title = input("Enter the Title of the book: ")
-                Book.search_book(book_title, book_title)
+                Library.search_book(book_title, book_title)
             elif book_op == "5": # Get run display books method
-                Book.view_books(book_title)
+                Library.view_books(book_title)
             elif book_op == "6": # Run shut down procedure or delete
                 break
             else:
