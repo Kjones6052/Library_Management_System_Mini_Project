@@ -7,7 +7,7 @@ class User:
         self.__name = name
         self.__library_id = library_id
         self.borrowed_books = []
-        #self.users = {}
+        self.reserved_books = []
 
     def get_user_name(self):
         return self.__name
@@ -55,6 +55,15 @@ class User:
         try:
             if user in variables.current_users.keys():
                 self.borrowed_books.remove(title)
+            else:
+                print("User not found.")
+        except Exception as e:
+            print(e)
+
+    def reserve_book(self, title, user):
+        try:
+            if user in variables.current_users.keys():
+                self.reserved_books.append(title)
             else:
                 print("User not found.")
         except Exception as e:

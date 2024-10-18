@@ -7,6 +7,7 @@ from user import User # all
 class Library:
     def __init__(self):
         self.library = {}
+        self.reservations = {}
 
     def add_book(self, book_title, details): # Method to add a new book
         try:
@@ -59,8 +60,9 @@ class Library:
     def reserve_book(self, book_title, user): # Method to reserve a borrowed book, optional
         try:
             if book_title in self.library.keys():
-                User.return_book(user, book_title)
+                User.reserve_book(user, book_title)
                 self.set_reserved()
+                self.reservations[book_title] = user
                 print(f"{book_title} has been reserved by {user}.")
             else:
                 print(f"{book_title} not found in library.")
