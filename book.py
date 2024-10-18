@@ -22,7 +22,7 @@ class Book:
     def get_genre(self):
         return self.__genre
     
-    def get_pub_date(self):
+    def get_publish_date(self):
         return self.__publish_date
     
     def get_availability(self):
@@ -45,3 +45,4 @@ class Book:
             self.__availability == "Reserved"
         except Exception as e:
             print(e)
+
