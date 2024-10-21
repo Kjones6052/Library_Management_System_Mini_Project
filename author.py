@@ -1,5 +1,4 @@
 
-from library import Library
 # Code for class: Author
 
 class Author: 

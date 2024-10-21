@@ -29,20 +29,8 @@ class Book:
         return self.__availability
     
     def set_available(self):
-        try:
-            self.__availability == "Available"
-        except Exception as e:
-            print(e)
-
+        self.__availability = "Available"
+        
     def set_borrowed(self):
-        try:
-            self.__availability == "Borrowed"
-        except Exception as e:
-            print(e)
-
-    def set_reserved(self):
-        try:
-            self.__availability == "Reserved"
-        except Exception as e:
-            print(e)
+        self.__availability = "Borrowed"
 
